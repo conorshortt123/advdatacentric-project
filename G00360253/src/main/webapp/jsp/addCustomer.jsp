@@ -5,22 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add new product</title>
+<title>Add new customer</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<h1>Add New Product</h1>
-	<form:form modelAttribute="product">
+	<h1>Add New Customer</h1>
+	<form:form modelAttribute="customer">
 		<table>
 			<tr>
-				<td>Product Description:</td>
-				<td><form:input path="pDesc"></form:input></td>
-				<td><form:errors path="pDesc"></form:errors></td>
-			</tr>
-			<tr>
-				<td>Quantity in Stock:</td>
-				<td><form:input path="qtyInStock"></form:input></td>
-				<td><form:errors path="qtyInStock"></form:errors></td>
+				<td>Customer Name:</td>
+				<td><form:input path="cName"></form:input></td>
+				<td><form:errors path="cName"></form:errors></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Add" /></td>

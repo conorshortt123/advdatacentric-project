@@ -21,7 +21,5 @@ public class ProductService {
 	public ArrayList<Product> getAllProducts() {
 		return (ArrayList<Product>) pi.findAll();
 	}
-
-	
 	
 }

@@ -5,28 +5,27 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add new product</title>
+<title>Error with order</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<h1>Add New Product</h1>
-	<form:form modelAttribute="product">
-		<table>
-			<tr>
-				<td>Product Description:</td>
-				<td><form:input path="pDesc"></form:input></td>
-				<td><form:errors path="pDesc"></form:errors></td>
-			</tr>
-			<tr>
-				<td>Quantity in Stock:</td>
-				<td><form:input path="qtyInStock"></form:input></td>
-				<td><form:errors path="qtyInStock"></form:errors></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Add" /></td>
-			</tr>
-		</table>
-	</form:form>
+	<h1 style="color: red">Error Processing Order</h1>
+
+	<h2 style="color: red">Quantity too large: Product stock =
+		${product.qtyInStock}</h2>
+	<table>
+		<tr>
+			<td><b>Product ID</b></td>
+			<td><b>Customer ID</b></td>
+			<td><b>Quantity</b></td>
+		</tr>
+		<tr>
+			<td>${product.pId}</td>
+			<td>${customer.cId}</td>
+			<td>${order.qty}</td>
+		</tr>
+	</table>
+
 	<h4>Indexes</h4>
 	<div>
 		<a href="/index.html">Home</a> <a href="/logout">Logout</a>
