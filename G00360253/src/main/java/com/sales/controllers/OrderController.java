@@ -67,6 +67,7 @@ public class OrderController {
 		if(result.hasErrors()) {
 			return "newOrder";
 		}
+		
 		Product p = o.getProd();
 		Customer c = o.getCust();
 							

@@ -12,11 +12,11 @@
 	<h1>List of Customers:</h1>
 	<c:forEach items="${customers}" var="customer">
 		<hr>
-		<h1>${customer.cId}| ${customer.cName}</h1>
+		<h1>${customer.cId} ${customer.cName}</h1>
 
-		<h2>${customer.cName}'sOrders</h2>
+		<h2>${customer.cName}'s Orders</h2>
 		<table>
-			<tr>
+			<tr id="tableHeader">
 				<td><b>Order ID</b></td>
 				<td><b>Quantity</b></td>
 				<td><b>Product ID</b></td>

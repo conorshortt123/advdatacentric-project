@@ -1,3 +1,21 @@
 table, th, td {
+	background-color: white;
     border: 1px solid black;
+    margin: 0 auto;
+	border-spacing: 2px;
+	border-color: gray;
+	border-collapse: collapse;
+}
+
+body {
+	background-color: lavender;
+	text-align: center;
+}
+
+#tableHeader {
+	background-color: #0D0D0D;
+}
+
+#tableFooter {
+	background-color: #f3f3f3;
 }
