@@ -23,7 +23,7 @@ import com.sales.services.OrderService;
 import com.sales.services.ProductService;
 
 @Controller
-@SessionAttributes("order")
+@SessionAttributes({"order", "products", "customers"})
 public class OrderController {
 	@Autowired
 	OrderInterface oi;
@@ -36,7 +36,9 @@ public class OrderController {
 	
 	@Autowired
 	CustomerService cs;
-
+	
+	// Sends a get request to the server if the user navigates to the URL. Gets data from database such
+	// As customers and products to be used in drop down boxes for the forms.
 	@RequestMapping(value = "/newOrder.html", method = RequestMethod.GET)
 	public String addOrderGET(Model model) {
 		Order order = new Order();
@@ -60,14 +62,20 @@ public class OrderController {
 
 		return "newOrder";
 	}
-
+	
+	// Retrieves data entered into the forms and checks if the data is valid.
+	// If order quantity is greater than product quantity user is sent to orderError jsp page.
+	// If product or customer is removed in the process of ordering the user is redirected to
+	// deletionError page.
 	@RequestMapping(value = "/newOrder.html", method = RequestMethod.POST)
 	public String addOrderPOST(@Valid @ModelAttribute("order") Order o, BindingResult result, Model m) {
 		
+		// Displays invalid quantity errors
 		if(result.hasErrors()) {
 			return "newOrder";
 		}
 		
+		// Gets product and customer to check if null. If they are then return deletionError page.
 		Product p = o.getProd();
 		Customer c = o.getCust();
 							
@@ -79,6 +87,8 @@ public class OrderController {
 			return "deletionError";
 		}
 	
+		// Checks if orderQty is less than product quantity. If so then database is updated and user
+		// is sent to ListOrders page. If order qty is greater than product qty user is sent to orderError page.
 		int orderQty = o.getQty();
 		int inStock = p.getQtyInStock();
 		
@@ -99,6 +109,7 @@ public class OrderController {
 
 	}
 
+	// Gets orders from database and list them.
 	@RequestMapping(value = "/ListOrders.html", method = RequestMethod.GET)
 	public String courseAddedGET(Model m) {
 		ArrayList<Order> orders = os.getAllOrders();

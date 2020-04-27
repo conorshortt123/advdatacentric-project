@@ -10,6 +10,12 @@ import org.springframework.stereotype.Repository;
 
 import com.sales.models.Order;
 
+/*
+ * Interface contains methods for custom queries to the database.
+ * updateDate sends a query to the database for the current order id and sets the date to the current date.
+ * updateProducts takes away from product quantity according to how much quantity was ordered.
+ */
+
 @Repository
 public interface OrderInterface extends CrudRepository<Order, Long> {
 	@Transactional

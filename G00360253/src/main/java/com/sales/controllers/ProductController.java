@@ -22,6 +22,7 @@ public class ProductController {
 	@Autowired
 	ProductService ps;
 
+	// Gets add product page from server.
 	@RequestMapping(value = "/addProduct.html", method = RequestMethod.GET)
 	public String addProductGET(Model model) {
 
@@ -31,17 +32,21 @@ public class ProductController {
 		return "addProduct";
 	}
 
+	// Retrieves data entered into form and injects it into the product object.
 	@RequestMapping(value = "/addProduct.html", method = RequestMethod.POST)
 	public String addProductPOST(@Valid @ModelAttribute("product") Product p, BindingResult result) {
 		
+		// Prints invalid input errors.
 		if(result.hasErrors()) {
 			return "addProduct";
 		}
 		
+		// Saves product to the database and returns list products page.
 		ps.saveProduct(p);
 		return "redirect:ListProducts.html";
 	}
 
+	// Gets all products from the database and puts them into an ArrayList, and lists them on JSP page.
 	@RequestMapping(value = "/ListProducts.html", method = RequestMethod.GET)
 	public String courseAddedGET(Model m) {
 		ArrayList<Product> products = ps.getAllProducts();
